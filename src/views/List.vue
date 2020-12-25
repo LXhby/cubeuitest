@@ -3,7 +3,7 @@
   <div class='search'>
   <cube-form :model="search" @submit="submitHandler">
   <cube-form-item class="formitem">
-<cube-input v-model="search.name" placeholder="按姓名搜索" clearable type="search">
+<cube-input v-model="search.name" placeholder="按姓名搜索" clearable >
     <span slot="append" class="iconfont icon-icon-search" @click="submitHandler"></span>
     </cube-input>
   </cube-form-item>
@@ -79,7 +79,7 @@ export default {
         startTime: null,
         endTime: null,
         currentPage: 1,
-        pageSize: 5
+        pageSize: 8
       },
 
       dateSegmentPicker: null
@@ -147,7 +147,7 @@ export default {
       item.showdetail = !item.showdetail
     },
     submitHandler () {
-      Utils.searchAssign(this.search, { currentPage: 1 })
+      Utils.searchAssign(this.search, { currentPage: 1, name: this.search.name })
       this.initData()
     },
     onPullingUp () {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <demo-questionnaire
-      ref="form"
+
       :tip="tip"
       :questions="questions"
       :submit="submit"
@@ -82,8 +82,8 @@ export default {
   },
   methods: {
     submitHandler (model) {
-      console.log('submit', model)
       insert(model).then(res => {
+
         // this.$refs.form.reset()
       })
     }

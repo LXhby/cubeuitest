@@ -7,6 +7,7 @@
 <style lang="scss">
 div{
   box-sizing: border-box;
+  font-size:16px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,6 +16,7 @@ div{
   box-sizing: border-box;
   text-align: center;
   color: #2c3e50;
+  font-size:16px;
 }
 
 #nav {

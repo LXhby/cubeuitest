@@ -2,6 +2,7 @@
   <div class="demo-questionnaire">
     <p class="demo-questionnaire-tip cubeic-warn" v-if="tip" v-html="tip"></p>
     <cube-form
+    ref="form"
       :model="model"
       :schema="schema"
       :immediate-validate="false"
@@ -119,6 +120,8 @@ export default {
       e.preventDefault()
       // 校验通过，提交事件
       this.$emit('submit', this.getModel())
+      console.log('this.$refs.form', this.$refs.form)
+      this.$refs.form.reset()
     },
     getModel () {
       const allModel = this.model

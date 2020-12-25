@@ -17,5 +17,6 @@ module.exports = {
       postCompile: true,
       theme: true
     }
-  }
+  },
+  publicPath: './'
 }
