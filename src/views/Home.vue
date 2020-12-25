@@ -1,18 +1,92 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <demo-questionnaire
+      ref="form"
+      :tip="tip"
+      :questions="questions"
+      :submit="submit"
+      @submit="submitHandler"
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import DemoQuestionnaire from '@/example/components/questionnaire/questionnaire.vue'
+import { insert } from '@/api/index'
 export default {
   name: 'Home',
+  data () {
+    return {
+      tip: '请配合如实填写问卷，确保xxxx相关文案',
+      model: {
+        name: '',
+        temperature: '',
+        visitReason: '',
+        scheduling: ''
+      },
+      questions: [
+        {
+          type: 'input',
+          model: 'name',
+          title: '姓名',
+          options: {
+            placeholder: '请输入姓名'
+          },
+          required: true,
+          errMsg: '请输入姓名'
+        },
+        {
+          type: 'temperature',
+          model: 'temperature',
+          title: '体温(℃)',
+          options: {
+            placeholder: '请输入体温'
+          },
+          required: true,
+          errMsg: '请输入体温',
+          pattern: /^\d+(\.\d+)?$/
+        },
+
+        {
+          type: 'textarea',
+          model: 'visitReason',
+          title: '来访事由',
+          options: {
+            placeholder: '请输入来访事由',
+            indicator: true,
+            maxlength: 255
+          },
+          required: true,
+          errMsg: '请输入来访事由'
+        },
+        {
+          type: 'textarea',
+          model: 'scheduling',
+          title: '过去14天行程',
+          options: {
+            placeholder: '请输入过去14天行程',
+            indicator: true,
+            maxlength: 255
+          },
+          required: true,
+          errMsg: '请输入过去14天行程'
+        }
+      ],
+      submit: {
+        text: '提交'
+      }
+    }
+  },
   components: {
-    HelloWorld
+    DemoQuestionnaire
+  },
+  methods: {
+    submitHandler (model) {
+      console.log('submit', model)
+      insert(model).then(res => {
+        // this.$refs.form.reset()
+      })
+    }
   }
 }
 </script>

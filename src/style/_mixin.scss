@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@import './variable';
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@mixin ellipse-lines($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+@mixin center-flex($direction: both) {
+  display: flex;
+
+  @if $direction==both {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @else if $direction==x {
+    justify-content: center;
+  }
+
+  @else if $direction==y {
+    align-items: center;
+  }
+}
