@@ -2,6 +2,7 @@
 
 ## Project setup
 ```
+cubu-ui搭建的移动端项目
 yarn install
 ```
 
